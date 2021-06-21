@@ -1,0 +1,38 @@
+.checkout > img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.checkout {
+    display: grid;
+    height: max-content;
+}
+
+.subtotal__container {
+    /*background-color: rgba(255,255,255,0.3);*/
+    /*background-color: #808080;*/
+    height: 200px;
+    background-color: rgba(0,0,0,0.3);
+    width: 320px;
+    padding-left: 15px;
+}
+
+.checkout__right {
+    /*margin-left: 75%;*/
+    /*margin: auto;*/
+    margin-top: 10px;
+    width: 25%;
+    margin-top: 20px!important;
+}
+
+@media only screen and (max-width: 768px) {
+
+    /*.subtotal__container {
+        display: flex;
+        flex-direction: column;
+        height: 220px;
+        background-color: rgba(0,0,0,0.3);
+        width: 370px;
+        padding-left: 15px;
+    }*/
+}

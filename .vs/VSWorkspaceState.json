@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Authentication",
+    "\\src\\components\\Authentication\\RegisterLogin",
+    "\\src\\components\\Authentication\\RegisterLogin\\Register",
+    "\\src\\components\\AuthListener",
+    "\\src\\components\\Header",
+    "\\src\\components\\QueryLinks",
+    "\\src\\components\\RequestMethods",
+    "\\src\\components\\RouteSwitcher"
+  ],
+  "SelectedNode": "\\src\\components\\Header\\NavigationBar.js",
+  "PreviewInSolutionExplorer": false
+}

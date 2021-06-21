@@ -1,0 +1,9 @@
+.notFoundPage {
+    display:flex;
+    justify-content:center;
+    height:800px;
+}
+
+.headerNotFound {
+    margin-top:50px;
+}

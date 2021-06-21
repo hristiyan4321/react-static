@@ -1,0 +1,21 @@
+.ChaeckoutProduct {
+    display: flex;
+}
+
+.ChaeckoutProduct > img {
+    object-fit: contain;
+    width: 180px;
+    height: 180px;
+}
+
+.ChaeckoutProduct__info {
+    padding-left: 20px;
+}
+
+.button__remove {
+    margin-top: 10px!important;
+}
+
+.ChaeckoutProduct__rating {
+    display: flex;
+}

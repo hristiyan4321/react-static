@@ -1,0 +1,12 @@
+/*Basket visuals.*/
+.text-infos3 {
+    margin: auto;
+    color: #000 ;
+    text-decoration: none !important;
+    width: 73px!important;
+}
+
+    /*link at the last spot*/
+    .text-infos3:hover {
+        color: gold !important;
+    }
