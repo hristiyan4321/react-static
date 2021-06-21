@@ -3,9 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"engines": {
-        "node": "14.16.1",
-        "npm": "6.14.12"
-    },
+		"node": "12.10.0",
+		"npm": "6.10.3"
+	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.5.1",
 		"@testing-library/jest-dom": "^5.12.0",
