@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { setUser } from '../../../components/Redux/Actions/User/addUser';
+import store from '../../../components/Redux/store';
+import UserService from '../../../components/Services/User/UserService';
 
 const UserAddress = ({back, addresses, updateAddress, getAddress}) => {
     const history = useHistory();
-    const primaryAddress = addresses.filter(x => x.primaryAddress === true)[0];
-       
+    const userService = new UserService();
+
+    const state = useSelector(state => state);
+    let user = state.userReducer.user;
+
+    const primaryAddress = user?.addresses?.filter(x => x.primaryAddress === true)[0];
+
     const [address, setAddress] = useState({
         id: primaryAddress?.id,
         country: primaryAddress?.country,
@@ -12,21 +21,58 @@ const UserAddress = ({back, addresses, updateAddress, getAddress}) => {
         addressLocation: primaryAddress?.addressLocation,
     });
 
+    const getUserProfile = async () => {        
+        const userProfile =  await userService.getUserProfile();
+        debugger
+        store.dispatch(setUser(userProfile));
+        const address = await userProfile?.addresses?.filter(x => x.primaryAddress === true)[0];
+        setAddress({
+            id: address?.id,
+            country: address?.country,
+            city: address?.city,
+            addressLocation: address?.addressLocation,
+        });
+    }
+
+    useEffect(() => {
+        getUserProfile();
+    }, [])
+
     const addressHandler = async (e) => {
         e.preventDefault();
+        const country = e.target.country.value;
+        const city = e.target.city.value;
+        const addressLocation = e.target.addressLocation.value;
+        
         const payload = {
-            id: primaryAddress?.id,
-            country: e.target.country.value,
-            city: e.target.city.value,
-            addressLocation: e.target.addressLocation.value,
+            id: primaryAddress?.id !== undefined ? primaryAddress?.id : null,
+            country,
+            city,
+            addressLocation,
             primaryAddress: primaryAddress?.primaryAddress,
         }
+        
+        const result = await userService.updateAddress(payload);
 
-        const result = await updateAddress(payload);
-        if (await result?.errors) {
-            // TODO errors.
+        const error = document.getElementById("error");
+        error.innerHTML = "";
+        
+        if (result?.error) {
+            error.innerHTML = result.error;
+        } else if (result?.errors) {
+            
+            error.innerHTML = "";
+
+            let arrayOfErrors = Object.values(result.errors);
+
+            arrayOfErrors.forEach((item, index) => {
+                error.innerHTML += item + "<br />";
+            });
         } else {
+            error.innerHTML = "Success.";
 
+            const ress = await userService.getUserProfile();
+            
             setAddress({
                 id: await result?.id,
                 country: await result?.country,
@@ -34,17 +80,19 @@ const UserAddress = ({back, addresses, updateAddress, getAddress}) => {
                 addressLocation: await result?.addressLocation,
             });
 
-            history.push("/profile")
-            back({addressClick: true});
+            // Add updated user to redux.
+            store.dispatch(setUser(ress));
         }
+        
     }
 
     return <div className="container">
-        <button className="btn btn-secondary" onClick={() => back({addressClick: false})} >Back</button>
+        <button className="btn btn-secondary" onClick={() => history.push("/profile")} >Back</button>
         
         <hr />
         Address
         <div className="row">
+            <span id="error" className="text-danger"></span>
             <div className="col-md-4">
                 <form onSubmit={addressHandler}>
                     <div  className="text-danger"></div>

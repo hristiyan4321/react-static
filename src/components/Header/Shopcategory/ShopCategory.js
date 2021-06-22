@@ -45,6 +45,14 @@ class ShopCategory extends Component {
 		}
 	}
 
+	setLoadAgain = (loading) => {
+		if (loading) {
+			this.setState({
+				loadAgain: loading,
+			})
+		}
+	}
+
 	render() {
 
 		if (this.state.loadAgain) {
@@ -73,7 +81,7 @@ class ShopCategory extends Component {
 						<text className="text-primary">{data.name}</text>
 						{data?.categories.map((categories, catIndex) => (
 							
-							!categories.isDeleted ?<CategoryList categories={categories} /> : null
+							!categories.isDeleted ?<CategoryList categories={categories} setLoadAgain={this.setLoadAgain}  /> : null
 							//<Link className="d-block pl-3 text-secondary" to={"/product?id=" + categories.id}>{categories.name}</Link>
 						))}
 					</div>

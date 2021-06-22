@@ -3,9 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"engines": {
-		"node": "15.0.0",
-		"npm": "6.14.12"
-	},
+        "node": "14.16.1",
+        "npm": "6.14.12"
+    },
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.5.1",
 		"@testing-library/jest-dom": "^5.12.0",
@@ -19,13 +19,14 @@
 		"react-router": "^5.2.0",
 		"react-router-bootstrap": "^0.25.0",
 		"react-router-dom": "^5.2.0",
-		"react-scripts": "^4.0.3",
+		"react-scripts": "4.0.3",
 		"reactstrap": "^8.4.1",
 		"web-vitals": "^1.1.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"postbuild": "rimraf build/**/*.map",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

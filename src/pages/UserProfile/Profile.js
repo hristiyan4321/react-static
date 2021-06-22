@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import UserAddress from './UserAddress/UserAddress';
 
@@ -63,7 +64,7 @@ const Profile = ({ firstName, lastName, phoneNumber, email, addresses, updatePro
             </div>
 
             <div className="pl-sm-2">
-                <div className="btn btn-primary" onClick={() => setAddress({addressLClick: true})}>Address</div>
+                <div className="btn btn-primary" onClick={() => history.push("/address")}>Address</div>
             </div>
 
             <hr />
@@ -102,4 +103,10 @@ const Profile = ({ firstName, lastName, phoneNumber, email, addresses, updatePro
     </div>
 }
 
-export default Profile;
+// const mapStateToProps = (state) => {
+// 	return {
+// 		user: state.userReducer.user,
+// 	}
+// }
+
+export default (Profile);

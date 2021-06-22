@@ -200,7 +200,11 @@ class ProductList extends Component {
                     ))
                     
                     :
-                        <Loader />
+                        <div className="text-center w-100 mt-5">
+
+                            <h4>No results</h4>
+
+                        </div>
                     }
                         {this.state.products?.length > 0 
                             ?

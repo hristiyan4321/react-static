@@ -26,6 +26,7 @@ import CategoryAdminPage from "./pages/AdminPageHolder/Category/CategoryAdminPag
 import NotFound from "./pages/NotFoundPage/NotFount";
 import ProductsAdminPage from "./pages/AdminPageHolder/Products/ProductsAdminPage";
 import OrderAdminPage from "./pages/AdminPageHolder/Order/OrderAdminPage";
+import UserAddress from "./pages/UserProfile/UserAddress/UserAddress";
 
 const administrator = "Administrator";
 const employee = "Employee";
@@ -65,6 +66,14 @@ class App extends Component {
 							<Route exact path="/profile">
 								{user ? 
 								<UserProfile />
+								:
+								<Login />
+								}
+							</Route>
+
+							<Route exact path="/address">
+								{user ? 
+								<UserAddress />
 								:
 								<Login />
 								}

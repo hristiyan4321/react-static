@@ -73,12 +73,8 @@ class NavigationBar extends Component {
 
 					<div
 						className="d-lg-flex w-100 ">
-						<Link
-							className="ml-lg-3 search-fields"
-							onClick={upPage}
-							to="/">
-							<ShopCategory />
-						</Link>
+						
+						<ShopCategory />
 
 						<SearchWidget />
 
