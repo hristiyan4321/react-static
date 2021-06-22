@@ -6,6 +6,7 @@
     "\\src\\components\\Authentication",
     "\\src\\components\\Authentication\\RegisterLogin",
     "\\src\\components\\Authentication\\RegisterLogin\\Register",
+    "\\src\\components\\BaseUrl",
     "\\src\\components\\Header",
     "\\src\\components\\QueryLinks",
     "\\src\\components\\RequestMethods",
